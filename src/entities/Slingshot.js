@@ -9,7 +9,7 @@ const CAT_CLASSES = {
 };
 
 const MAX_DRAG = 90;
-const LAUNCH_POWER = 0.14;
+const LAUNCH_POWER = 0.40;
 
 export default class Slingshot {
   constructor(scene, x, y, catQueue) {
@@ -58,14 +58,18 @@ export default class Slingshot {
     const dy = pointer.y - (this.y - 30);
     const dist = Math.sqrt(dx * dx + dy * dy);
 
+    let newX, newY;
     if (dist > MAX_DRAG) {
       const angle = Math.atan2(dy, dx);
-      this.activeCat.sprite.x = this.x + Math.cos(angle) * MAX_DRAG;
-      this.activeCat.sprite.y = (this.y - 30) + Math.sin(angle) * MAX_DRAG;
+      newX = this.x + Math.cos(angle) * MAX_DRAG;
+      newY = (this.y - 30) + Math.sin(angle) * MAX_DRAG;
     } else {
-      this.activeCat.sprite.x = pointer.x;
-      this.activeCat.sprite.y = pointer.y;
+      newX = pointer.x;
+      newY = pointer.y;
     }
+
+    this.activeCat.sprite.x = newX;
+    this.activeCat.sprite.y = Math.min(newY, this.y - 10);
   }
 
   _onPointerUp() {
