@@ -13,7 +13,8 @@ const LEVEL_MODULES = {
   4: () => import('../levels/level4.json'),
   5: () => import('../levels/level5.json'),
   6: () => import('../levels/level6.json'),
-  7: () => import('../levels/levelBonus.json')
+  7: () => import('../levels/levelBonus.json'),
+  sandbox: () => import('../levels/levelSandbox.json')
 };
 
 export default class Game extends Phaser.Scene {
@@ -24,6 +25,7 @@ export default class Game extends Phaser.Scene {
   init(data) {
     this.levelId = data.levelId || 1;
     this.levelData = null;
+    this.isSandbox = false;
     this.dogs = [];
     this.slingshot = null;
     this.napSpot = null;
@@ -35,6 +37,7 @@ export default class Game extends Phaser.Scene {
   async create() {
     const raw = await LEVEL_MODULES[this.levelId]();
     this.levelData = parseLevel(raw.default || raw);
+    this.isSandbox = !!this.levelData.sandbox;
 
     this._buildGround();
     this._buildLevel();
@@ -101,7 +104,7 @@ export default class Game extends Phaser.Scene {
     }
 
     if (bodyA.label === 'dog' && bodyB.label === 'napSpot') {
-      this._triggerLose();
+      if (!this.isSandbox) this._triggerLose();
     }
   }
 
@@ -151,7 +154,7 @@ export default class Game extends Phaser.Scene {
 
     if (this.activeCat?.launched && this.activeCat.isOffScreen(GAME_WIDTH, GAME_HEIGHT)) {
       this.activeCat = null;
-      if (this.slingshot.catsRemaining === 0) {
+      if (this.slingshot.catsRemaining === 0 && !this.isSandbox) {
         this.time.delayedCall(2000, () => {
           if (!this.gameOver) this._triggerLose();
         });

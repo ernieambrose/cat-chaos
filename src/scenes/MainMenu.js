@@ -38,6 +38,17 @@ export default class MainMenu extends Phaser.Scene {
     });
 
     this._addLevelButton(cx, 430, BONUS_LEVEL_ID, true);
+
+    const sandboxBtn = this.add.text(cx, 490, '🧪 Sandbox', {
+      fontSize: '20px',
+      color: '#aaffaa',
+      backgroundColor: '#224422',
+      padding: { x: 14, y: 8 },
+      stroke: '#000', strokeThickness: 2
+    }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+    sandboxBtn.on('pointerover', () => sandboxBtn.setStyle({ backgroundColor: '#336633' }));
+    sandboxBtn.on('pointerout', () => sandboxBtn.setStyle({ backgroundColor: '#224422' }));
+    sandboxBtn.on('pointerdown', () => this.scene.start('Game', { levelId: 'sandbox' }));
   }
 
   _addLevelButton(x, y, levelId, isBonus = false) {
