@@ -92,6 +92,16 @@ export default class Slingshot {
     });
   }
 
+  launchWithVelocity(vx, vy) {
+    if (!this.activeCat) return;
+    this.isDragging = false;
+    const launched = this.activeCat;
+    this.activeCat = null;
+    launched.launch(vx, vy);
+    if (this.onCatLaunched) this.onCatLaunched(launched);
+    this.scene.time.delayedCall(1500, () => { this._spawnNextCat(); });
+  }
+
   get catsRemaining() {
     return this.catQueue.length + (this.activeCat ? 1 : 0);
   }

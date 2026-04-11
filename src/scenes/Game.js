@@ -45,6 +45,92 @@ export default class Game extends Phaser.Scene {
     this._setupAbilityInput();
 
     this.scene.launch('HUD', { levelId: this.levelId });
+
+    if (this.isSandbox) {
+      this._createSandboxControls();
+      this.events.once('shutdown', () => this._destroySandboxControls());
+    }
+  }
+
+  _createSandboxControls() {
+    const rect = this.game.canvas.getBoundingClientRect();
+
+    const div = document.createElement('div');
+    Object.assign(div.style, {
+      position: 'fixed',
+      bottom: `${window.innerHeight - rect.bottom + 8}px`,
+      right: `${window.innerWidth - rect.right + 8}px`,
+      background: 'rgba(0,0,0,0.75)',
+      color: 'white',
+      padding: '12px 14px',
+      borderRadius: '8px',
+      fontFamily: 'monospace',
+      fontSize: '13px',
+      zIndex: '100',
+      minWidth: '210px',
+      lineHeight: '1.6'
+    });
+
+    const title = document.createElement('div');
+    title.textContent = '🧪 Sandbox Controls';
+    Object.assign(title.style, { marginBottom: '8px', fontWeight: 'bold', color: '#aaffaa' });
+    div.appendChild(title);
+
+    const makeSlider = (labelText, min, max, value, step) => {
+      const valSpan = document.createElement('span');
+      valSpan.textContent = value;
+      const label = document.createElement('label');
+      label.append(document.createTextNode(`${labelText}: `), valSpan);
+      const slider = document.createElement('input');
+      Object.assign(slider, { type: 'range', min, max, value, step });
+      slider.style.cssText = 'width:100%;display:block;margin:2px 0 8px';
+      div.appendChild(label);
+      div.appendChild(slider);
+      return { slider, valSpan };
+    };
+
+    const { slider: speedSlider, valSpan: speedVal } = makeSlider('Speed (px/fr)', 5, 40, 18, 1);
+
+    const lpNote = document.createElement('div');
+    Object.assign(lpNote.style, { fontSize: '11px', color: '#aaa', marginBottom: '8px', marginTop: '-6px' });
+    const lpSpan = document.createElement('span');
+    lpSpan.textContent = '0.20';
+    lpNote.append(document.createTextNode('LAUNCH_POWER \u2248 '), lpSpan);
+    div.appendChild(lpNote);
+
+    const { slider: angleSlider, valSpan: angleVal } = makeSlider('Angle (\u00b0)', 5, 75, 35, 5);
+
+    const btn = document.createElement('button');
+    btn.textContent = '🚀 Launch';
+    Object.assign(btn.style, {
+      width: '100%', padding: '7px', background: '#2255aa',
+      color: 'white', border: 'none', borderRadius: '4px',
+      cursor: 'pointer', fontSize: '14px'
+    });
+    div.appendChild(btn);
+
+    document.body.appendChild(div);
+    this._sandboxDiv = div;
+
+    speedSlider.addEventListener('input', () => {
+      speedVal.textContent = speedSlider.value;
+      lpSpan.textContent = (speedSlider.value / 90).toFixed(2);
+    });
+    angleSlider.addEventListener('input', () => {
+      angleVal.textContent = angleSlider.value;
+    });
+    btn.addEventListener('click', () => {
+      const speed = parseFloat(speedSlider.value);
+      const rad = parseFloat(angleSlider.value) * Math.PI / 180;
+      this.slingshot.launchWithVelocity(speed * Math.cos(rad), -speed * Math.sin(rad));
+    });
+  }
+
+  _destroySandboxControls() {
+    if (this._sandboxDiv) {
+      this._sandboxDiv.remove();
+      this._sandboxDiv = null;
+    }
   }
 
   _buildGround() {
