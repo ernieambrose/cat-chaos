@@ -1,0 +1,20 @@
+{
+  "id": 3,
+  "name": "The Colonel Arrives",
+  "catQueue": ["mittens", "colonel", "mittens"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "stone", "x": 620, "y": 430, "width": 40, "height": 120 },
+    { "type": "wood", "x": 660, "y": 460, "width": 80, "height": 60 },
+    { "type": "stone", "x": 700, "y": 430, "width": 40, "height": 120 }
+  ],
+  "dogs": [
+    { "x": 650, "y": 390 },
+    { "x": 690, "y": 390 }
+  ],
+  "tables": [
+    { "x": 500, "y": 430, "items": 3 }
+  ],
+  "starThresholds": [0, 1, 2]
+}

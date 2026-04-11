@@ -1,0 +1,29 @@
+{
+  "id": 7,
+  "name": "Maximum Chaos",
+  "catQueue": ["mittens", "colonel", "duchess", "mittens", "colonel", "duchess", "mittens"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "wood", "x": 560, "y": 440, "width": 40, "height": 80 },
+    { "type": "stone", "x": 600, "y": 380, "width": 40, "height": 200 },
+    { "type": "wood", "x": 640, "y": 450, "width": 80, "height": 60 },
+    { "type": "stone", "x": 680, "y": 360, "width": 40, "height": 200 },
+    { "type": "wood", "x": 720, "y": 400, "width": 40, "height": 140 },
+    { "type": "stone", "x": 760, "y": 380, "width": 80, "height": 160 },
+    { "type": "wood", "x": 840, "y": 420, "width": 40, "height": 120 }
+  ],
+  "dogs": [
+    { "x": 570, "y": 400 },
+    { "x": 620, "y": 340 },
+    { "x": 660, "y": 420 },
+    { "x": 700, "y": 320 },
+    { "x": 740, "y": 360 },
+    { "x": 800, "y": 340 }
+  ],
+  "tables": [
+    { "x": 430, "y": 430, "items": 3 },
+    { "x": 510, "y": 430, "items": 3 }
+  ],
+  "starThresholds": [0, 3, 5]
+}

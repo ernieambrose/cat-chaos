@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "name": "Wake-Up Call",
+  "catQueue": ["mittens", "mittens", "mittens"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "wood", "x": 620, "y": 460, "width": 40, "height": 80 },
+    { "type": "wood", "x": 660, "y": 480, "width": 80, "height": 40 }
+  ],
+  "dogs": [
+    { "x": 640, "y": 430 }
+  ],
+  "tables": [],
+  "starThresholds": [0, 1, 2]
+}

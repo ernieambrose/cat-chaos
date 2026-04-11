@@ -1,0 +1,27 @@
+{
+  "id": 6,
+  "name": "The Big Nap Napper",
+  "catQueue": ["mittens", "colonel", "duchess", "mittens", "colonel", "duchess"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "stone", "x": 580, "y": 400, "width": 40, "height": 140 },
+    { "type": "wood", "x": 620, "y": 450, "width": 80, "height": 40 },
+    { "type": "stone", "x": 660, "y": 380, "width": 40, "height": 180 },
+    { "type": "wood", "x": 700, "y": 420, "width": 40, "height": 120 },
+    { "type": "stone", "x": 740, "y": 400, "width": 80, "height": 140 },
+    { "type": "wood", "x": 820, "y": 440, "width": 40, "height": 100 }
+  ],
+  "dogs": [
+    { "x": 600, "y": 360 },
+    { "x": 650, "y": 340 },
+    { "x": 710, "y": 380 },
+    { "x": 760, "y": 360 },
+    { "x": 840, "y": 400 }
+  ],
+  "tables": [
+    { "x": 460, "y": 430, "items": 3 },
+    { "x": 540, "y": 430, "items": 3 }
+  ],
+  "starThresholds": [0, 2, 4]
+}

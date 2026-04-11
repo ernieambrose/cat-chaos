@@ -1,0 +1,23 @@
+{
+  "id": 4,
+  "name": "High Rise",
+  "catQueue": ["mittens", "colonel", "colonel", "mittens"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "wood", "x": 600, "y": 430, "width": 40, "height": 120 },
+    { "type": "stone", "x": 640, "y": 380, "width": 80, "height": 40 },
+    { "type": "wood", "x": 680, "y": 430, "width": 40, "height": 120 },
+    { "type": "stone", "x": 640, "y": 340, "width": 80, "height": 40 }
+  ],
+  "dogs": [
+    { "x": 640, "y": 350 },
+    { "x": 640, "y": 440 },
+    { "x": 680, "y": 440 }
+  ],
+  "tables": [
+    { "x": 480, "y": 430, "items": 2 },
+    { "x": 550, "y": 430, "items": 2 }
+  ],
+  "starThresholds": [0, 1, 3]
+}

@@ -1,0 +1,19 @@
+{
+  "id": 2,
+  "name": "Table Trouble",
+  "catQueue": ["mittens", "mittens", "mittens"],
+  "napSpot": { "x": 120, "y": 490 },
+  "slingshot": { "x": 220, "y": 460 },
+  "structures": [
+    { "type": "wood", "x": 640, "y": 440, "width": 40, "height": 100 },
+    { "type": "wood", "x": 700, "y": 440, "width": 40, "height": 100 }
+  ],
+  "dogs": [
+    { "x": 650, "y": 400 },
+    { "x": 700, "y": 400 }
+  ],
+  "tables": [
+    { "x": 480, "y": 430, "items": 2 }
+  ],
+  "starThresholds": [0, 1, 2]
+}
