@@ -78,6 +78,7 @@ export default class Slingshot {
     if (Math.abs(vx) < 0.5 && Math.abs(vy) < 0.5) return;
 
     const launched = this.activeCat;
+    this.activeCat = null;
     launched.launch(vx, vy);
 
     if (this.onCatLaunched) this.onCatLaunched(launched);
