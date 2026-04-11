@@ -9,7 +9,7 @@ const CAT_CLASSES = {
 };
 
 const MAX_DRAG = 90;
-const LAUNCH_POWER = 0.25;
+const LAUNCH_POWER = 0.20;
 
 export default class Slingshot {
   constructor(scene, x, y, catQueue) {
