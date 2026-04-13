@@ -2,6 +2,7 @@ export function parseLevel(data) {
   return {
     id: data.id,
     name: data.name,
+    sandbox: !!data.sandbox,
     catQueue: [...data.catQueue],
     napSpot: { ...data.napSpot },
     slingshot: { ...data.slingshot },
