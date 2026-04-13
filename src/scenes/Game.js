@@ -53,13 +53,11 @@ export default class Game extends Phaser.Scene {
   }
 
   _createSandboxControls() {
-    const rect = this.game.canvas.getBoundingClientRect();
-
     const div = document.createElement('div');
     Object.assign(div.style, {
       position: 'fixed',
-      bottom: `${window.innerHeight - rect.bottom + 8}px`,
-      right: `${window.innerWidth - rect.right + 8}px`,
+      bottom: '8px',
+      right: '8px',
       background: 'rgba(0,0,0,0.75)',
       color: 'white',
       padding: '12px 14px',
