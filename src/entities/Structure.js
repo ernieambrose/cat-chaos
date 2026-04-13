@@ -6,8 +6,11 @@ export default class Structure {
     this.type = type;
     this.destroyed = false;
 
+    const area = width * height;
+    const woodMass = Math.max(0.3, area / 1600);  // 40×40 ref block = 1
+
     this.sprite = scene.matter.add.image(x, y, textureKey, null, {
-      mass: type === 'stone' ? 4 : 1,
+      mass: type === 'stone' ? woodMass * 4 : woodMass,
       restitution: 0.1,
       friction: 0.8,
       label: 'structure'
